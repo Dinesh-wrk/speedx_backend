@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  authentication:
+    image: dineshwork/speedx-cv:s1v1  # Update to your Docker Hub username and repository
+    ports:
+      - "5505:5505"
+    env_file:
+      - common.env
+    environment:
+      DB_NAME: test_db
+
+  display_models:
+    image: dineshwork/speedx-cv:s2v1  # Update to your Docker Hub username and repository
+    ports:
+      - "5006:5006"
+    env_file:
+      - common.env
+    environment:
+      DB_NAME: models
+
+  display_schema:
+    image: dineshwork/speedx-cv:s3v1  # Update to your Docker Hub username and repository
+    ports:
+      - "5000:5000"
+    env_file:
+      - common.env
+    environment:
+      DB_NAME: techinsurance
+
+  display_solution:
+    image: dineshwork/speedx-cv:s4v1  # Update to your Docker Hub username and repository
+    ports:
+      - "5005:5005"
+    env_file:
+      - common.env
+    environment:
+      DB_NAME: test_db
+
+  insuranceapis_swagger:
+    image: dineshwork/speedx-cv:s5v1  # Update to your Docker Hub username and repository
+    ports:
+      - "5050:5050"
+    env_file:
+      - common.env
+    environment:
+      DB_NAME: techinsurance
